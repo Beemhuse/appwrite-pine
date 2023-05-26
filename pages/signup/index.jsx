@@ -11,10 +11,10 @@ import api from "../api/hello";
 
 export default function Signup(props) {
   const [data, setData] = useState({
-    // username: '',
-    // email:'',
-    // fullname:'',
-    // password:''
+    username: '',
+    email:'',
+    fullname:'',
+    password:''
   })
   const id = uuidv7()
   const [password, setPassword] = useState(false)
@@ -31,26 +31,26 @@ console.log(data)
 
  
   const signUpPromise = account.create(
-        // ID.unique(),
+        ID.unique(),
       data.email, 
       data.password,
       data.username, 
       data.fullname
       )
 
-const signUpUser = async (e) => {
-e.preventDefault()
-signUpPromise.then(response => {
-    console.log(response);
-    window.location.href = "/chat"
-    // Success
+// const signUpUser = async (e) => {
+// e.preventDefault()
+// signUpPromise.then(response => {
+//     console.log(response);
+//     window.location.href = "/chat"
+//     // Success
 
-}, error => {
-    console.log(error);
-    // Error
+// }, error => {
+//     console.log(error);
+//     // Error
 
-});
-}
+// });
+// }
 
 const handleSignup = async (e) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ const handleSignup = async (e) => {
         Sign Up for an Account
       </Typography>
 
-      <form onSubmit={signUpUser} >
+      <form onSubmit={handleSignup} >
       {/* {error && (
               <Alert severity="error">
                 {error}

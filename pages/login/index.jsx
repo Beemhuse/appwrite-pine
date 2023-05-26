@@ -6,7 +6,7 @@ import { TextField, Button, Typography, Grid, } from "@mui/material";
 // import { useAuth } from "../../context/auth";
 import { useState } from "react";
 import InputAdornment from '@mui/material/InputAdornment';
-
+import api from "../api/hello";
 
 
 
@@ -27,9 +27,26 @@ export default function HomePage(props) {
     setPassword(!password)
   }
 
+ const login = async (e) => {
+    e.preventDefault();
  
+   
 
-
+      api.login(
+        data.email,
+        data.password
+      )
+      .then(response => {
+        console.log(response);
+        window.location.href = '/chat'
+        // Success
+    }, error => {
+        console.log(error);
+        // Error
+    
+    });
+  
+ }
   return (
 
     <Grid container sx={{ minHeight: '100vh' }} >
